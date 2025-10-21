@@ -3,14 +3,14 @@ import pandas as pd
 
 # Series object is a 1D arra of indexed data
 # Like a COLUMN (one category)
-month = pd.Series(['Jan', 'Feb', 'Mar', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
+month = pd.Series(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
 print(month)
 # Series have attributes
 print(month.values) # looks like a list
 print(month.index) # shows the range of nums
 
 # You can set the index explicitly!!!
-month_list = ['Jan', 'Feb', 'Mar', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+month_list = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 better_month = pd.Series(month_list, index=[1,2,3,4,5,6,7,8,9,10,11,12])
 
 print(f'My birthday is in {better_month[1]}')
@@ -26,3 +26,21 @@ birth_months = {'Kevin':'Mar',
                 'Maia':'Apr',}
 birth_series = pd.Series(birth_months)
 print(birth_series)
+
+# Create a DataFrame from a dictionary
+df = pd.DataFrame(birth_series, columns= ['Birth Month'])
+print(df) #DataFrame objects have column headers
+
+#Create a DataFrame from dictionaries
+
+# Load tabular datat from a CSV file into a DataFrame
+pokemon_df = pd.read_csv('pokemon_data.csv')
+print(pokemon_df) # [800 rows x 12 cols]
+print(pokemon_df.columns)# display col headers
+
+#Column headers can be used to access individual columns
+print(pokemon_df['Name'])
+#Shortcut using DOT OPERATOR notation
+#print(pokemon_df)
+#Shortcut doees not work for all column names...
+print(pokemon_df['Type 1'])
